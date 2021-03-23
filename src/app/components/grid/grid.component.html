@@ -1,0 +1,40 @@
+<section class="wrapper">
+  <app-navigation (taken)="ActionTakenHandler($event)"></app-navigation>
+  <div class="grid-flex">
+    <div class="grid-container">
+
+      <div (mousedown)="MouseDown($event)" (mouseup)="MouseUp($event)" >
+        <div *ngFor="let r of [].constructor(rows);let rn = index;" class="row">
+          <div *ngFor = "let c of [].constructor(cols);let cn= index" class="col" >
+            <app-node #node [node]="nodes[rn][cn]" (dropped) = "Drop($event)" ></app-node>
+          </div>
+        </div>
+      </div>
+
+<!--      <div class="test">-->
+<!--        <div class="info">-->
+<!--          <div class="detail">-->
+<!--            <div class="node isStartNode"></div>-->
+<!--            <div class="text">Starting Point(drag to change)</div>-->
+<!--          </div>-->
+<!--          <div class="detail">-->
+<!--            <div class="node isEndNode"></div>-->
+<!--            <div class="text">Ending Point (drag to change)</div>-->
+<!--          </div>-->
+<!--          <div class="detail">-->
+<!--            <div class="node isWall"></div>-->
+<!--            <div class="text">Creates a Wall (click and drag on cells)</div>-->
+<!--          </div>-->
+<!--          <div class="detail">-->
+<!--            <div class="node isVisited"></div>-->
+<!--            <div class="text">Discovered Nodes</div>-->
+<!--          </div>-->
+<!--          <div class="detail">-->
+<!--            <div class="node inPath"></div>-->
+<!--            <div class="text">Shortest Path</div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+  </div>
+</section>

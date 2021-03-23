@@ -1,0 +1,56 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!--  mobile navigation-->
+  <mat-sidenav #drawer class="fixedInViewport"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/dashboard" (click)="drawer.close()">Dashboard</a>
+      <a mat-list-item routerLink="/" (click)="drawer.close()">Login</a>
+      <a mat-list-item routerLink="/about/contact" (click)="drawer.close()">Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!--  normal navigation-->
+  <mat-sidenav-content>
+    <mat-toolbar class="sidenav-content">
+      <span class="logo" routerLink="/">PATHFINDING</span>
+      <span class="logo--mobile--wrapper">
+        <button
+          class="logo__mobile"
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      </span>
+
+
+      <span class="fill-space"></span>
+      <div class="navigation--buttons"
+           (drop)="drop($event)"
+           *ngIf="!(isHandset$ | async)">
+
+
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+          Djikstra
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item><span>Djikstra</span></button>
+        </mat-menu>
+
+        <button mat-button (click)="ActionClick('start')">Start</button>
+        <button mat-button (click)="ActionClick('stop')">Refresh</button>
+      </div>
+
+
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

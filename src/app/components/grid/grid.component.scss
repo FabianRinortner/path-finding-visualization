@@ -1,0 +1,24 @@
+.wrapper {
+  height: 100vh;
+  background: whitesmoke;
+}
+
+.grid-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-container {
+  padding-top: 80px;
+}
+
+.row, .col{
+  display: flex;
+}
+
+.test {
+  background: #afc3c2;
+}
+
+
